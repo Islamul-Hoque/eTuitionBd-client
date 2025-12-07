@@ -18,12 +18,11 @@ const NavBar = () => {
     }
 
     const links = <>
-   
-      <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/tuitions">Tuitions</NavLink></li>
-      <li><NavLink to="/tutors">Tutors</NavLink></li>
-      <li><NavLink to="/about">About</NavLink></li>
-      <li><NavLink to="/contact">Contact</NavLink></li>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/tuitions">Tuitions</NavLink></li>
+        <li><NavLink to="/tutors">Tutors</NavLink></li>
+        <li><NavLink to="/about">About</NavLink></li>
+        <li><NavLink to="/contact">Contact</NavLink></li>
     
         {
             user && <>
@@ -68,6 +67,7 @@ const NavBar = () => {
 
                         <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <li><a>{user?.displayName || "User"}</a></li>
+                            <li><a>{user?.email || "User"}</a></li>
                             <li><Link onClick={handleLogOut} className="text-red-600 hover:bg-red-50">Logout</Link></li>
                         </ul>
                     </div>
