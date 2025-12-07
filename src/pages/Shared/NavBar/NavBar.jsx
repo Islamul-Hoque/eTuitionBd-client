@@ -29,12 +29,10 @@ const NavBar = () => {
                 <li><NavLink to="/dashboard">Dashboard</NavLink></li>
             </>
         }
-
     </>
 
-    
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-indigo-50 text-gray-800 sticky z-50 top-0 shadow">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -42,7 +40,7 @@ const NavBar = () => {
                     </div>
                     <ul
                         tabIndex="-1"
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content  bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {links}
                     </ul>
                 </div>

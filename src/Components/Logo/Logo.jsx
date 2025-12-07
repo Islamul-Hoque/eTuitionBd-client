@@ -3,7 +3,7 @@ import React from 'react';
 const Logo = () => {
     return (
         <div>
-            <h3>Logo + name</h3>
+            <h3 className='text-indigo-500'>Logo + name</h3>
         </div>
     );
 };
