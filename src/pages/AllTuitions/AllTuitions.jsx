@@ -8,40 +8,6 @@ import { useState } from 'react';
 
 const AllTuitions = () => {
     const axiosSecure = useAxiosSecure();
-  const [apps, setApps] = useState([]);
-  const [totalApps, setTotalApps] = useState(0);
-  const [totalPage, setTotalPage] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [sort, setsort] = useState("");
-  const [order, setOrder] = useState("");
-  const [searchText, setSearchText] = useState("");
-  const limit = 10;
-
-  useEffect(() => {
-    fetch(
-      `http://localhost:5000/apps?limit=${limit}&skip=${ currentPage * limit}&sort=${sort}&order=${order}&search=${searchText}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setApps(data.apps);
-        setTotalApps(data.total);
-        const page = Math.ceil(data.total / limit);
-        setTotalPage(page);
-      });
-  }, [currentPage, order, sort, searchText]);
-
-  const handleSelect = (e) => {
-    console.log(e.target.value);
-    const sortText = e.target.value;
-    setsort(sortText.split("-")[0]);
-    setOrder(sortText.split("-")[1]);
-  };
-
-  const handleSearch = (e) => {
-    setSearchText(e.target.value);
-    setCurrentPage(0);
-  };
-
   // 🔎 Search state
   const [search, setSearch] = useState("");
 
