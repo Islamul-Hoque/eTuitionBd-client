@@ -5,6 +5,7 @@ import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home/Home";
 import AllTuitions from "../pages/AllTuitions/AllTuitions";
 import AllTutors from "../pages/AllTutors/AllTutors";
+import About from "../pages/About/About";
 
 
 
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: 'all-tutors',
         Component: AllTutors
+      },
+      {
+        path: 'about',
+        Component: About
       },
     ]
   }, 
