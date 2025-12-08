@@ -25,7 +25,7 @@ const AllTutors = () => {
                 <p className="text-gray-600 mb-6"> Browse all verified tutors with their qualifications and experience.  </p>
             </div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} transition={{ staggerChildren: 0.15 }} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {allTutors.map(tutor => ( <TutorsCard key={tutor} tutor={tutor}/> ))}
+                {allTutors.map(tutor => ( <TutorsCard key={tutor._id} tutor={tutor}/> ))}
             </motion.div>
         </div>
     );
