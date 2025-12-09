@@ -30,18 +30,23 @@ const MyTuitions = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-
-        if (result.isConfirmed) {
-            axiosSecure.delete(`/my-tuitions/${id}`).then((res) => {
-        if (res.data.deletedCount) {
-            refetch();
-            Swal.fire({
-                title: "Deleted!",
-                text: "Your tuition post has been deleted.",
-                icon: "success",
-            })}})
-        }})
+        })
+        .then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/tuition/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your tuition post has been deleted.",
+                                icon: "success",
+                            })
+                        }
+                    }
+                )
+            }
+        })
     }
 
     const handlePayment = async (tuition) => {
