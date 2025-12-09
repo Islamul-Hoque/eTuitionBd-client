@@ -21,8 +21,8 @@ const Footer = () => {
           <h4 className="text-lg font-semibold text-indigo-600 mb-4">Quick Links</h4>
           <div className="flex flex-wrap gap-4 text-sm font-medium">
             <a href="/" className="hover:text-indigo-600 transition">Home</a>
-            <a href="/tuitions" className="hover:text-indigo-600 transition">Tuitions</a>
-            <a href="/tutors" className="hover:text-indigo-600 transition">Tutors</a>
+            <a href="/all-tuitions" className="hover:text-indigo-600 transition">Tuitions</a>
+            <a href="/all-tutors" className="hover:text-indigo-600 transition">Tutors</a>
             <a href="/about" className="hover:text-indigo-600 transition">About</a>
             <a href="/contact" className="hover:text-indigo-600 transition">Contact</a>
           </div>

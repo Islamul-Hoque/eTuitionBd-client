@@ -1,10 +1,12 @@
 import React from 'react';
-
+import logo from '../../assets/eTuitionBD.png'
+import { Link } from 'react-router';
 const Logo = () => {
     return (
-        <div>
-            <h3 className='text-indigo-500'>eTuitionBD</h3>
-        </div>
+        <Link className='flex gap-1 items-center'>
+            <img src={logo} className='w-[3rem]' alt="eTuitionBD logo" />
+            <h3 className='text-indigo-600 text-[1.8rem] font-bold'>eTuitionBD</h3>
+        </Link>
     );
 };
 
