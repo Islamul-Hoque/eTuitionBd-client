@@ -2,9 +2,10 @@ import React from 'react';
 import Logo from '../../../components/Logo/Logo';
 import { Link, NavLink } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
+import Loading from '../../../Components/Loading/Loading';
 
 const NavBar = () => {
-    const { user, logOut } = useAuth();
+    const { user, loading, logOut } = useAuth();
     
     const handleLogOut = () => {
         logOut()
@@ -29,6 +30,7 @@ const NavBar = () => {
         }
     </>
 
+    if(loading) return <Loading/>
     return (
         <div className="navbar bg-indigo-50 text-gray-800 sticky z-50 top-0 shadow">
             <div className="navbar-start">
@@ -57,7 +59,11 @@ const NavBar = () => {
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full"> 
-                                <img src={user?.photoURL ||  user?.providerData?.[0]?.photoURL || "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"} alt="" /> </div>
+                                <img 
+                                src=
+                                // {user?.photoURL ||  user?.providerData?.[0]?.photoURL || "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"} 
+                                {user && user.photoURL ? user.photoURL : "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"}
+                                alt="" /> </div>
                         </div>
 
                         <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
