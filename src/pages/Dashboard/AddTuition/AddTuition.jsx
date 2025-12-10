@@ -136,7 +136,7 @@ const AddTuition = () => {
   </div>
   <div>
     <label className="label">Student Email</label>
-    <input type="email" value={user?.email} readOnly className="input w-full " />
+    <input type="email" value={user?.email || user?.providerData?.[0]?.email} readOnly className="input w-full " />
   </div>
 
   {/* Submit Button */}

@@ -30,7 +30,7 @@ const NavBar = () => {
         }
     </>
 
-    if(loading) return <Loading/>
+    // if(loading) return <Loading/>
     return (
         <div className="navbar bg-indigo-50 text-gray-800 sticky z-50 top-0 shadow">
             <div className="navbar-start">

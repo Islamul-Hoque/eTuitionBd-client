@@ -75,7 +75,8 @@ const MyTuitions = () => {
                             <th>Subject</th>
                             <th>Class</th>
                             <th>Budget</th>
-                            <th>Payment</th>
+                            {/* <th>Payment</th> */}
+                            <th>Date</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -87,12 +88,12 @@ const MyTuitions = () => {
                             <td>{tuition.subject}</td>
                             <td>{tuition.class}</td>
                             <td>{tuition.budget} Tk/Month</td>
-                            {/* <td>{tuition.schedule}</td> */}
-                            <td>
+                            <td>{tuition.createdAt}</td>
+                            {/* <td>
                                 {tuition.paymentStatus === 'paid' ? ( <span className="text-green-800 font-semibold">Paid</span>
                                     ) : (
                                     <button onClick={() => handlePayment(tuition)} className="btn btn-sm bg-indigo-600 text-white hover:bg-indigo-700"> Pay </button> )}
-                            </td>
+                            </td> */}
 
                             {/* <td>{tuition.studentEmail}</td> */}
                             <td>{tuition.status}</td>

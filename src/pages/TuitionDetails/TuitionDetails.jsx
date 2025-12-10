@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { motion } from "framer-motion";
@@ -30,6 +30,7 @@ const TuitionDetails = () => {
 
   const application = {
     tuitionId: id,
+    tutorPhoto: user?.photoURL ||  user?.providerData?.[0]?.photoURL,
     tutorName: form.name.value,
     tutorEmail: form.email.value,
     qualifications: form.qualifications.value,
@@ -51,12 +52,7 @@ try {
   toast.error(`${err.response?.data?.message || "Error submitting application!"}`);
   console.error(err);
 }
-
-
-
 };
-
-
 
   if (isLoading) return <Loading />;
 
@@ -77,7 +73,9 @@ try {
 
     {/* {user?.role === "Tutor" && ( */}
           <button className="mt-6 w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md"
-            onClick={handleApplyModalOpen} > Apply Now </button>
+            onClick={handleApplyModalOpen} 
+            // to='/apply-tuition'
+            > Apply Now </button>
         {/* )} */}
     </motion.div>
 
@@ -87,72 +85,18 @@ try {
       Apply for {tuition.subject}
     </h3>
 
-    <form onSubmit={handleApplySubmit} className="space-y-3 mt-4">
-      <div className="flex gap-4">
-        <div className="w-1/2">
-          <label className="label">Name</label>
-          <input
-            name="name"
-            defaultValue={user?.displayName}
-            readOnly
-            type="text"
-            className="input w-full"
-            placeholder="Your name"
-            required
-          />
-        </div>
-        <div className="w-1/2">
-          <label className="label">Email</label>
-          <input
-            name="email"
-            defaultValue={user?.email}
-            readOnly
-            type="email"
-            className="input w-full"
-            placeholder="Your email"
-            required
-          />
-        </div>
-      </div>
+        <form onSubmit={handleApplySubmit} className="space-y-3 mt-4">
+          <div className="flex gap-4">
+            <div className="w-1/2"><label className="label">Name</label><input name="name" defaultValue={user?.displayName} readOnly type="text" className="input w-full" placeholder="Your name" required /></div>
+            <div className="w-1/2"><label className="label">Email</label><input name="email" defaultValue={user?.email || user?.providerData?.[0]?.email} readOnly type="email" className="input w-full" placeholder="Your email" required /></div>
+          </div>
+          <label className="label">Qualifications</label><input name="qualifications" type="text" className="input w-full" placeholder={`e.g. B.Sc in ${tuition.subject}`} required />
+          <label className="label">Experience</label><input name="experience" type="text" className="input w-full" placeholder="e.g. 6 years overall teaching experience" required />
+          <label className="label">Expected Salary</label><input name="salary" type="number" className="input w-full" placeholder="e.g. 4000" required />
+          <label className="label">Contact Number</label><input name="contact" type="text" className="input w-full" placeholder="e.g. 017XXXXXXXX" required />
+          <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3">Submit Application</button>
+        </form>
 
-      <label className="label">Qualifications</label>
-      <input
-        name="qualifications"
-        type="text"
-        className="input w-full"
-        placeholder={`e.g. B.Sc in ${tuition.subject}`}
-        required
-      />
-
-      <label className="label">Experience</label>
-      <input
-        name="experience"
-        type="text"
-        className="input w-full"
-        placeholder="e.g. 6 years overall teaching experience"
-        required
-      />
-
-      <label className="label">Expected Salary</label>
-      <input
-        name="salary"
-        type="number"
-        className="input w-full"
-        placeholder="e.g. 4000"
-        required
-      />
-
-      <label className="label">Contact Number</label>
-      <input
-        name="contact"
-        type="text"
-        className="input w-full"
-        placeholder="e.g. 017XXXXXXXX"
-        required
-      />
-
-      <button type="submit"   className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3"   >  Submit Application </button>
-    </form>
 
     <div className="modal-action">
       <form method="dialog" className="w-full">

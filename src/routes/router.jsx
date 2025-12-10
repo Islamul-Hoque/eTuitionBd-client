@@ -15,7 +15,7 @@ import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import AddTuition from "../pages/Dashboard/AddTuition/AddTuition";
 import MyTuitions from "../pages/Dashboard/My Tuitions/MyTuitions";
 import UpdateTuitionPost from "../pages/Dashboard/UpdateTuitionPost/UpdateTuitionPost";
-
+import AppliedTutors from "../pages/Dashboard/AppliedTutors/AppliedTutors";
 
 
 export const router = createBrowserRouter([
@@ -82,45 +82,10 @@ export const router = createBrowserRouter([
         path: 'my-tuitions', 
         Component: MyTuitions
       },
-      // {
-      //   path: 'payment/:parcelId',
-      //   Component: Payment
-      // }, 
-      // {
-      //   path: 'payment-history',
-      //   Component: PaymentHistory
-      // },
-      // {
-      //   path: 'payment-success',
-      //   Component: PaymentSuccess
-      // }, 
-      // {
-      //   path: 'payment-cancelled', 
-      //   Component: PaymentCancelled
-      // }, 
-      // rider only routes
-      // {
-      //   path: 'assigned-deliveries',
-      //   element: <RiderRoute><AssignedDeliveries></AssignedDeliveries></RiderRoute>
-      // },
-      // {
-      //   path: 'completed-deliveries',
-      //   element: <RiderRoute><CompletedDeliveries></CompletedDeliveries></RiderRoute>
-      // },
-
-      // admin only routes
-      // {
-      //   path: 'approve-riders',
-      //   element: <AdminRoute><ApproveRiders></ApproveRiders></AdminRoute>
-      // },
-      // {
-      //   path: 'assign-riders',
-      //   element: <AdminRoute><AssignRiders></AssignRiders></AdminRoute>
-      // },
-      // {
-      //   path: 'users-management',
-      //   element: <AdminRoute><UsersManagement></UsersManagement></AdminRoute>
-      // }
+      {
+        path: 'applied-tutors', 
+        Component: AppliedTutors
+      },
     ]
   }
 
