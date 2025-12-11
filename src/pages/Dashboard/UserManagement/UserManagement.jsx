@@ -22,13 +22,28 @@ const UserManagement = () => {
   };
 
   const handleDelete = async (userId) => {
-    // Swal.fire({ title: "Are you sure?", text: "This account will be permanently deleted!", icon: "warning", showCancelButton: true, confirmButtonColor: "#3085d6", cancelButtonColor: "#d33", confirmButtonText: "Yes, delete it!" }).then(async (result) => {
-    //   if (result.isConfirmed) { const res = await axiosSecure.delete(`/users/${userId}`); if (res.data.deletedCount > 0) { Swal.fire("Deleted!", "User account removed successfully.", "success"); refetch(); } }
-    // });
-  };
+    Swal.fire({ 
+      title: "Are you sure?", 
+      text: "This account will be permanently deleted!", 
+      icon: "warning", 
+      showCancelButton: true, 
+      confirmButtonColor: "#3085d6", 
+      cancelButtonColor: "#d33", 
+      confirmButtonText: "Yes, delete it!" 
+    }).then(async (result) => {
+      if (result.isConfirmed) { 
+        const res = await axiosSecure.delete(`/users/${userId}`); 
+          if (res.data.deletedCount > 0) { 
+            Swal.fire("Deleted!", "User account removed successfully.", "success"); 
+            refetch(); 
+          } 
+        }
+    })
+  }
 
   const handleRoleUpdate = async (userId, newRole) => {
-    Swal.fire({ title: "Confirm Role Change", 
+    Swal.fire({ 
+      title: "Confirm Role Change", 
       text: `Are you sure you want to change role to ${newRole}?`, 
       icon: "question", 
       showCancelButton: true, 
@@ -39,8 +54,8 @@ const UserManagement = () => {
         if (res.data.modifiedCount > 0) { 
           toast.success("Role updated successfully!"); refetch(); } 
         }
-    });
-  };
+    })
+  }
 
   if (isLoading) return <Loading />;
 
