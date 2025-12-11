@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const MyApplications = () => {
   const { user } = useAuth();
@@ -29,7 +30,11 @@ const MyApplications = () => {
       contact: form.contact.value 
     }
     const res = await axiosSecure.patch(`/applications/${app._id}`, updatedData);
-    if (res.data.modifiedCount > 0) { refetch(); UpdateModalRef.current.close(); }
+    if (res.data.modifiedCount > 0) { 
+          refetch();
+          UpdateModalRef.current.close();
+          toast.success("Application updated successfully!");
+    }
   };
 
 const handleDelete = async (appId) => {
@@ -61,7 +66,15 @@ const handleDelete = async (appId) => {
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
-            <tr><th>#</th><th>Tuition Info</th><th>Qualifications</th><th>Experience</th><th>Expected Salary</th><th>Status</th><th>Actions</th></tr>
+            <tr>
+              <th>#</th>
+              <th>Tuition Info</th>
+              <th>Qualifications</th>
+              <th>Experience</th>
+              <th>Expected Salary</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
           </thead>
           <tbody>
             {myApplications.map((app, index) => (
@@ -92,52 +105,13 @@ const handleDelete = async (appId) => {
         <div className="modal-box bg-white">
           <h3 className="font-bold text-[1.5rem] text-center">Update Application</h3>
           {selectedApp && (
-            <form onSubmit={(e) => handleUpdateSubmit(e, selectedApp)} className="space-y-3 mt-4">
-  <label className="label">Qualifications</label>
-  <input 
-    name="qualifications" 
-    type="text" 
-    value={selectedApp?.qualifications || ""} 
-    onChange={(e) => setSelectedApp({ ...selectedApp, qualifications: e.target.value })} 
-    className="input w-full" 
-    required 
-  />
-
-  <label className="label">Experience</label>
-  <input 
-    name="experience" 
-    type="text" 
-    value={selectedApp?.experience || ""} 
-    onChange={(e) => setSelectedApp({ ...selectedApp, experience: e.target.value })} 
-    className="input w-full" 
-    required 
-  />
-
-  <label className="label">Expected Salary</label>
-  <input 
-    name="salary" 
-    type="number" 
-    value={selectedApp?.expectedSalary || ""} 
-    onChange={(e) => setSelectedApp({ ...selectedApp, expectedSalary: e.target.value })} 
-    className="input w-full" 
-    required 
-  />
-
-  <label className="label">Contact Number</label>
-  <input 
-    name="contact" 
-    type="text" 
-    value={selectedApp?.contact || ""} 
-    onChange={(e) => setSelectedApp({ ...selectedApp, contact: e.target.value })} 
-    className="input w-full" 
-    required 
-  />
-
-  <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3">
-    Update Application
-  </button>
-</form>
-
+              <form onSubmit={(e) => handleUpdateSubmit(e, selectedApp)} className="space-y-3 mt-4">
+                <label className="label">Qualifications</label><input name="qualifications" type="text" value={selectedApp?.qualifications || ""} onChange={(e) => setSelectedApp({ ...selectedApp, qualifications: e.target.value })} className="input w-full" required />
+                <label className="label">Experience</label><input name="experience" type="text" value={selectedApp?.experience || ""} onChange={(e) => setSelectedApp({ ...selectedApp, experience: e.target.value })} className="input w-full" required />
+                <label className="label">Expected Salary</label><input name="salary" type="number" value={selectedApp?.expectedSalary || ""} onChange={(e) => setSelectedApp({ ...selectedApp, expectedSalary: e.target.value })} className="input w-full" required />
+                <label className="label">Contact Number</label><input name="contact" type="text" value={selectedApp?.contact || ""} onChange={(e) => setSelectedApp({ ...selectedApp, contact: e.target.value })} className="input w-full" required />
+                <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3">Update Application</button>
+              </form>
           )}
           <div className="modal-action">
             <form method="dialog" className="w-full"><button className="w-full bg-indigo-100 text-gray-800 py-2 rounded-lg hover:bg-indigo-200 transition duration-300 font-semibold shadow-md">Cancel</button></form>

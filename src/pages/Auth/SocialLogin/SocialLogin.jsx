@@ -20,7 +20,7 @@ const SocialLogin = () => {
                 const userInfo = {
                     email: result.user.email || result.user?.providerData?.[0]?.email,
                     displayName: result.user.displayName,
-                    photoURL: result.user.photoURL,
+                    photoURL: result.user.photoURL || result.user?.providerData?.[0]?.photoURL,
                     role: "Student",
                     phone: ""
                 }
