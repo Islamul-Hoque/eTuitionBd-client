@@ -21,15 +21,15 @@ const MyApplications = () => {
 
   const handleUpdateSubmit = async (e, app) => {
     e.preventDefault();
-    // const form = e.target;
-    // const updatedData = { 
-    //   qualifications: form.qualifications.value, 
-    //   experience: form.experience.value, 
-    //   expectedSalary: form.salary.value, 
-    //   contact: form.contact.value 
-    // }
-    // const res = await axiosSecure.patch(`/applications/${app._id}`, updatedData);
-    // if (res.data.modifiedCount > 0) { refetch(); UpdateModalRef.current.close(); }
+    const form = e.target;
+    const updatedData = { 
+      qualifications: form.qualifications.value, 
+      experience: form.experience.value, 
+      expectedSalary: form.salary.value, 
+      contact: form.contact.value 
+    }
+    const res = await axiosSecure.patch(`/applications/${app._id}`, updatedData);
+    if (res.data.modifiedCount > 0) { refetch(); UpdateModalRef.current.close(); }
   };
 
 const handleDelete = async (appId) => {
