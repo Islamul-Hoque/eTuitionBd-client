@@ -21,10 +21,9 @@ const DashboardLayout = () => {
                 </nav>
                 {/* Page content here */}
                 <Outlet></Outlet>
-
             </div>
 
-            <div className="drawer-side is-drawer-close:overflow-visible">
+            <div className="drawer-side is-drawer-close:overflow-visible sticky left-0 bottom-0">
                 <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                 <div className="flex min-h-full flex-col items-start bg-indigo-50   text-gray-800 shadow is-drawer-close:w-14 is-drawer-open:w-64">
                     {/* Sidebar content here */}
@@ -59,7 +58,6 @@ const DashboardLayout = () => {
                         </>
                     }
 
-
                         {
                             role === 'Tutor' && <>
                                 <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Applications" to="/dashboard/my-applications">
@@ -77,7 +75,6 @@ const DashboardLayout = () => {
                             </>
                         }
 
-
                         {
                             role === 'Admin' && <>
                                 <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="User Management" to="/dashboard/users-management">
@@ -94,7 +91,6 @@ const DashboardLayout = () => {
                                 </li>
                             </>
                         }
-
 
                         <li>
                             <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Edit Profile" to="/dashboard/edit-profile">

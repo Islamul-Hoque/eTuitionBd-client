@@ -11,7 +11,9 @@ const UserManagement = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const UpdateModalRef = useRef(null);
 
-  const { data: users = [], isLoading, refetch } = useQuery({ queryKey: ["users"], queryFn: async () => { const res = await axiosSecure.get("/users"); return res.data; } });
+  const { data: users = [], isLoading, refetch } = useQuery({ 
+    queryKey: ["users"], 
+    queryFn: async () => { const res = await axiosSecure.get("/users"); return res.data; } });
 
   const handleUpdateSubmit = async (e, user) => {
     e.preventDefault();
@@ -75,7 +77,15 @@ const UserManagement = () => {
       <h2 className="text-2xl font-bold text-indigo-600 mb-4">User Management ({users.length})</h2>
       <div className="overflow-x-auto">
         <table className="table">
-          <thead><tr><th>#</th><th>Profile</th><th>Role</th><th>Role Update</th><th>Status</th><th>Actions</th></tr></thead>
+          <thead>
+            <tr><th>#</th>
+            <th>Profile</th>
+            <th>Role</th>
+            <th>Role Update</th>
+            <th>Status</th>
+            <th>Actions</th>
+            </tr>
+          </thead>
           <tbody>
             {users.map((user, index) => (
               <tr key={user._id}>

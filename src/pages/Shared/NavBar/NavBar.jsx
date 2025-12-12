@@ -14,18 +14,21 @@ const NavBar = () => {
             console.log(error)
         })
     }
-    console.log(user);
+    // console.log(user);
+const activeClass = ({ isActive }) => isActive
+    ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
+    : "text-gray-700 hover:text-indigo-500 px-3 py-1 rounded-md";
 
     const links = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/all-tuitions">Tuitions</NavLink></li>
-        <li><NavLink to="/all-tutors">Tutors</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
-        <li><NavLink to="/contact">Contact</NavLink></li>
+        <li><NavLink className={activeClass} to="/">Home</NavLink></li>
+        <li><NavLink className={activeClass} to="/all-tuitions">Tuitions</NavLink></li>
+        <li><NavLink className={activeClass} to="/all-tutors">Tutors</NavLink></li>
+        <li><NavLink className={activeClass} to="/about">About</NavLink></li>
+        <li><NavLink className={activeClass} to="/contact">Contact</NavLink></li>
 
         {
             user && <>
-                <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+                <li><NavLink className={activeClass} to="/dashboard">Dashboard</NavLink></li>
             </>
         }
     </>

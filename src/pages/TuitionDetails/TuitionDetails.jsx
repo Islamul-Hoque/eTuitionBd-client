@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { motion } from "framer-motion";
-import { FaBookOpen, FaGraduationCap, FaSchool, FaMapMarkerAlt, FaClock, FaMoneyBillWave, FaUser, FaPhoneAlt, FaEye, FaClipboardList } from "react-icons/fa";
+import { FaBookOpen, FaGraduationCap, FaSchool, FaMapMarkerAlt, FaClock, FaMoneyBillWave, FaUser, FaPhoneAlt, FaEye, FaClipboardList, FaEnvelope } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../Components/Loading/Loading";
 import toast from "react-hot-toast";
@@ -72,14 +72,15 @@ try {
       <p className="text-gray-700 flex items-center gap-2"><FaMoneyBillWave className="text-indigo-500" /> Budget: {tuition.budget} Tk/Month</p>
       <p className="text-gray-700 flex items-center gap-2"><FaUser className="text-indigo-500" /> Student: {tuition.studentName}</p>
       <p className="text-gray-700 flex items-center gap-2"><FaPhoneAlt className="text-indigo-500" /> Phone: {tuition.phone}</p>
+      <p className="text-gray-700 flex items-center gap-2"><FaEnvelope className="text-indigo-500" /> Email: {tuition.studentEmail}</p>
       <p className="text-gray-700 flex items-center gap-2"> <FaClipboardList className="text-indigo-500" />Additional Requirements: {tuition.additionalRequirements}</p>
-      <p className="text-gray-700 flex items-center gap-2"><FaEye className="text-indigo-500" />  Status: {tuition.status}</p>
+      {/* <p className="text-gray-700 flex items-center gap-2"><FaEye className="text-indigo-500" />  Status: {tuition.status}</p> */}
 
-    {user?.role === "Tutor" && (
-          <button className="mt-6 w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md"
+    {role === "Tutor" && (
+          <button className="mt-6 w-full cursor-pointer bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md"
             onClick={handleApplyModalOpen} 
             > Apply Now </button>
-        )}
+         )} 
     </motion.div>
 
 <dialog ref={ApplyModalRef} className="modal modal-bottom sm:modal-middle">

@@ -23,6 +23,10 @@ import EditProfile from "../pages/Dashboard/EditProfile/EditProfile";
 import AdminRoute from "./AdminRoute";
 import TutorRoute from "./TutorRoute";
 import StudentRoute from "./StudentRoute";
+import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
+import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
 
 
 export const router = createBrowserRouter([
@@ -78,6 +82,21 @@ export const router = createBrowserRouter([
         Component: DashboardHome
       },
       {
+        path: 'payment/:parcelId',
+        Component: Payment
+      },
+      {path: 'payment-history',
+        Component: PaymentHistory
+      },
+      {
+        path: 'payment-success',
+        Component: PaymentSuccess
+      }, 
+      {
+        path: 'payment-cancelled', 
+        Component: PaymentCancelled
+      },
+      {
         path: 'add-tuition', 
         element: <StudentRoute> <AddTuition/> </StudentRoute>,
       },
@@ -101,7 +120,7 @@ export const router = createBrowserRouter([
       // Admin route.......................
       {
         path: 'users-management', 
-        // element: <AdminRoute> <UserManagement/> </AdminRoute>,
+        element: <AdminRoute> <UserManagement/> </AdminRoute>,
       },
       {
         path: 'tuition-management', 

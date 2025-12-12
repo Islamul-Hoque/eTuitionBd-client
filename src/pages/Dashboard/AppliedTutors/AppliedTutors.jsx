@@ -9,9 +9,6 @@ import useAuth from "../../../hooks/useAuth";
 const AppliedTutors = () => {
 
   const { id: tuitionId } = useParams();
-console.log("tuitionId from route:", tuitionId);
-
-
 const { user } = useAuth();  
 const axiosSecure = useAxiosSecure();
 
@@ -23,6 +20,25 @@ const { data: applications = [], isLoading } = useQuery({
   }
 });
 
+const handleApprove = async (application) => {
+  try {
+    const paymentInfo = {
+      applicationId: application._id,
+      expectedSalary: application.expectedSalary,
+      tutorEmail: application.tutorEmail,
+      tuitionId: application.tuitionInfo._id,
+      studentEmail: user.email
+    };
+
+    const res = await axiosSecure.post("/payment-checkout-session", paymentInfo);
+
+    window.location.assign(res.data.url); 
+  } catch (err) {
+    console.error(err);
+    Swal.fire("Error", "Failed to start payment", "error");
+  }
+};
+
 
   const handleReject = async (applicationId) => {
     const res = await axiosSecure.patch(`/applications/${applicationId}`, { status: "Rejected" });
@@ -32,21 +48,16 @@ const { data: applications = [], isLoading } = useQuery({
     }
   };
 
-  const handleApprove = async (application) => {
-    Swal.fire("Approve clicked!", "Payment flow will be added later.", "info");
-  };
+
 
   if (isLoading) return <Loading />;
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold text-indigo-600 mb-4">
-        Applied Tutors ({applications.length})
-      </h2>
+      <h2 className="text-2xl font-bold text-indigo-600 mb-4"> Applied Tutors ({applications.length})</h2>
 
 <div className="overflow-x-auto">
   <table className="table">
-    {/* head */}
     <thead>
       <tr>
         <th>#</th>
@@ -61,10 +72,8 @@ const { data: applications = [], isLoading } = useQuery({
     <tbody>
       {applications.map((app, index) => (
         <tr key={app._id}>
-          {/* Serial */}
           <td>{index + 1}</td>
 
-          {/* Tuition Info */}
           <td>
             <span className="font-semibold">Subject: {app.tuitionInfo.subject}</span>
             <br />
@@ -72,34 +81,20 @@ const { data: applications = [], isLoading } = useQuery({
             <span >Class: {app.tuitionInfo.class}</span>
           </td>
 
-          {/* Tutor Info */}
           <td>
             <div className="flex items-center gap-3">
-              <div className="avatar">
-                <div className="mask mask-squircle h-12 w-12">
-                  <img
-                    src={app.tutorPhoto || "https://img.daisyui.com/images/profile/demo/2@94.webp"}
-                    alt="Tutor Avatar"
-                  />
-                </div>
-              </div>
+              <div className="avatar"> <div className="mask mask-squircle h-12 w-12"> <img src={app.tutorPhoto || "https://img.daisyui.com/images/profile/demo/2@94.webp"}  alt="Tutor Avatar"  /> </div> </div>
               <div>
                 <div className="font-bold">{app.tutorName}</div>
                 <div className="text-sm opacity-50">{app.tutorEmail}</div>
               </div>
             </div>
           </td>
-
-          {/* Other Info (Qualifications + Experience) */}
           <td>
             <span className="block">Qualification: {app.qualifications}</span>
             <span className="block">Experience: {app.experience}</span>
           </td>
-
-          {/* Expected Salary */}
           <td>{app.expectedSalary} Tk/Month</td>
-
-          {/* Status */}
           <td>{app.status}</td>
 
           {/* Actions */}
