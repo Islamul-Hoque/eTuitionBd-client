@@ -68,7 +68,8 @@ const { data: applications = [], isLoading } = useQuery({
           <td>
             <span className="font-semibold">Subject: {app.tuitionInfo.subject}</span>
             <br />
-            <span className="badge badge-ghost badge-sm">Class: {app.tuitionInfo.class}</span>
+            {/* <span className="badge badge-ghost badge-sm">Class: {app.tuitionInfo.class}</span> */}
+            <span >Class: {app.tuitionInfo.class}</span>
           </td>
 
           {/* Tutor Info */}

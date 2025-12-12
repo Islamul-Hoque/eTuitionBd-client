@@ -1,11 +1,12 @@
 import React from 'react';
 import { CiDeliveryTruck } from 'react-icons/ci';
-import { FaBookOpen, FaChartBar, FaClipboardList, FaGraduationCap, FaMoneyBillWave, FaMotorcycle, FaPlusCircle, FaRegCreditCard, FaTasks, FaUsers } from 'react-icons/fa';
+import { FaBookOpen, FaChartBar, FaClipboardList, FaGraduationCap, FaMoneyBillWave, FaMotorcycle, FaPlusCircle, FaRegCreditCard, FaTasks, FaUserEdit, FaUsers } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
-// import useRole from '../hooks/useRole';
+import useRole from '../../hooks/useRole';
+
 
 const DashboardLayout = () => {
-    // const { role } = useRole();
+    const { role } = useRole();
     return (
         <div className="drawer lg:drawer-open max-w-7xl mx-auto ">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -37,27 +38,30 @@ const DashboardLayout = () => {
                             </Link>
                         </li>
 
-                        {/* our dashboard links */}
-                        <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Add Tuition" to="/dashboard/add-tuition">
-                                <FaPlusCircle /><span className="is-drawer-close:hidden">Add Tuition</span>
-                            </NavLink>
-                        </li>
-                        <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Tuitions Post" to="/dashboard/my-tuitions">
-                                <FaBookOpen /> <span className="is-drawer-close:hidden">My Tuitions Post</span>
-                            </NavLink>
-                        </li>
-                        <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Applied Tutors" to="/dashboard/applied-tutors">
-                                <FaUsers /><span className="is-drawer-close:hidden">Applied Tutors</span>
-                            </NavLink>
-                        </li>
-                        <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payments" to="/dashboard/payments">
-                                <FaRegCreditCard /><span className="is-drawer-close:hidden">Payments</span>
-                            </NavLink>
-                        </li>
+                    {
+                        role === 'Student' && <>
+                            <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Add Tuition" to="/dashboard/add-tuition">
+                                    <FaPlusCircle /><span className="is-drawer-close:hidden">Add Tuition</span>
+                                </NavLink>
+                            </li>
+                            <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Tuitions Post" to="/dashboard/my-tuitions">
+                                    <FaBookOpen /> <span className="is-drawer-close:hidden">My Tuitions Post</span>
+                                </NavLink>
+                            </li>
+                            <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Applied Tutors" to="/dashboard/applied-tutors">
+                                    <FaUsers /><span className="is-drawer-close:hidden">Applied Tutors</span>
+                                </NavLink>
+                            </li>
+                            <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payments" to="/dashboard/payments">
+                                    <FaRegCreditCard /><span className="is-drawer-close:hidden">Payments</span>
+                                </NavLink>
+                            </li>
+                        </>
+                    }
 
 
-                        {/* {
-                            role === 'rider' && <> */}
+                        {
+                            role === 'Tutor' && <>
                                 <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Applications" to="/dashboard/my-applications">
                                         <FaClipboardList /> <span className="is-drawer-close:hidden">My Applications</span>
                                     </NavLink>
@@ -70,13 +74,12 @@ const DashboardLayout = () => {
                                         <FaMoneyBillWave />  <span className="is-drawer-close:hidden">Revenue History</span>
                                     </NavLink>
                                 </li>
-                            {/* </>
-                        } */}
+                            </>
+                        }
 
 
-                        {/* admin only links */}
-                        {/* {
-                            role === 'admin' && <> */}
+                        {
+                            role === 'Admin' && <>
                                 <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="User Management" to="/dashboard/users-management">
                                         <FaUsers /><span className="is-drawer-close:hidden">User Management</span>
                                     </NavLink>
@@ -89,16 +92,14 @@ const DashboardLayout = () => {
                                         <FaChartBar />  <span className="is-drawer-close:hidden">Reports & Analytics</span>
                                     </NavLink>
                                 </li>
-                            {/* </>
-                        } */}
+                            </>
+                        }
 
-                        {/* List item */}
+
                         <li>
-                            <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">
-                                {/* Settings icon */}
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M20 7h-9"></path><path d="M14 17H5"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg>
-                                <span className="is-drawer-close:hidden">Settings</span>
-                            </button>
+                            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Edit Profile" to="/dashboard/edit-profile">
+                                <FaUserEdit /><span className="is-drawer-close:hidden">Edit Profile</span>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>

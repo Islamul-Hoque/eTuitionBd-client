@@ -19,6 +19,10 @@ import AppliedTutors from "../pages/Dashboard/AppliedTutors/AppliedTutors";
 import MyApplications from "../pages/Dashboard/MyApplications/MyApplications";
 import UserManagement from "../pages/Dashboard/UserManagement/UserManagement";
 import TuitionManagement from "../pages/Dashboard/TuitionManagement/TuitionManagement";
+import EditProfile from "../pages/Dashboard/EditProfile/EditProfile";
+import AdminRoute from "./AdminRoute";
+import TutorRoute from "./TutorRoute";
+import StudentRoute from "./StudentRoute";
 
 
 export const router = createBrowserRouter([
@@ -69,41 +73,44 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
     children: [
-      // {
-      //   index: true,
-      //   Component: DashboardHome
-      // },
+      {
+        index: true,
+        Component: DashboardHome
+      },
       {
         path: 'add-tuition', 
-        Component: AddTuition
+        element: <StudentRoute> <AddTuition/> </StudentRoute>,
       },
       {
         path: 'update-tuition/:id', 
-        Component: UpdateTuitionPost
+        element: <StudentRoute> <UpdateTuitionPost/> </StudentRoute>,
       },
       {
         path: 'my-tuitions', 
-        Component: MyTuitions
+        element: <StudentRoute> <MyTuitions/> </StudentRoute>
       },
       {
         path: 'applied-tutors', 
-        Component: AppliedTutors
+        element: <StudentRoute> <AppliedTutors/> </StudentRoute>,
       },
-      // Tutor
+      // Tutor route......................
       {
         path: 'my-applications', 
-        Component: MyApplications
+        element: <TutorRoute> <MyApplications/> </TutorRoute>
       },
-      // Admin
+      // Admin route.......................
       {
         path: 'users-management', 
-        Component: UserManagement
+        // element: <AdminRoute> <UserManagement/> </AdminRoute>,
       },
       {
         path: 'tuition-management', 
-        Component: TuitionManagement
+        element: <AdminRoute> <TuitionManagement/> </AdminRoute>,
+      },
+      {
+        path: 'edit-profile', 
+        Component: EditProfile
       },
     ]
   }
-
 ]);

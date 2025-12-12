@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router";
 import Loading from "../../../Components/Loading/Loading";
+import { format } from "date-fns";
 
 const MyTuitions = () => {
     const { user } = useAuth();
@@ -88,7 +89,7 @@ const MyTuitions = () => {
                             <td>{tuition.subject}</td>
                             <td>{tuition.class}</td>
                             <td>{tuition.budget} Tk/Month</td>
-                            <td>{tuition.createdAt}</td>
+                            <td>{format(new Date(tuition.createdAt), "dd/MM/yyyy")}</td>
                             {/* <td>
                                 {tuition.paymentStatus === 'paid' ? ( <span className="text-green-800 font-semibold">Paid</span>
                                     ) : (

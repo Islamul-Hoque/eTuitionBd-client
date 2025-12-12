@@ -3,6 +3,7 @@ import useAuth from '../../../hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { FcGoogle } from 'react-icons/fc';
+import toast from 'react-hot-toast';
 
 const SocialLogin = () => {
     const { signInGoogle } = useAuth();
@@ -29,6 +30,7 @@ const SocialLogin = () => {
                     .then(res => {
                         console.log('user data has been stored', res.data)
                         navigate( '/');
+                        toast.success('Login successfully')
                     })
 
             })

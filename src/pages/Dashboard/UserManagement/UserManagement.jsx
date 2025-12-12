@@ -21,7 +21,7 @@ const UserManagement = () => {
       email: form.email.value, 
       photoURL: form.photoURL.value, 
       phone: form.phone.value, 
-      role: form.role.value, 
+      // role: form.role.value, 
       status: form.status.value 
     };
     const res = await axiosSecure.patch(`/users/${user._id}`, updatedData);
@@ -87,7 +87,13 @@ const UserManagement = () => {
                   </div>
                 </td>
                 <td>{user.role}</td>
-                <td><select defaultValue={user.role} onChange={(e) => handleRoleUpdate(user._id, e.target.value)} className="select select-sm"><option value="Student">Student</option><option value="Tutor">Tutor</option><option value="Admin">Admin</option></select></td>
+                <td>
+                  <select defaultValue={user.role} onChange={(e) => handleRoleUpdate(user._id, e.target.value)} className="select select-sm">
+                    <option value="Student">Student</option>
+                    <option value="Tutor">Tutor</option>
+                    <option value="Admin">Admin</option>
+                  </select>
+                </td>
                 <td>{user.status}</td>
                 {/* <td className="flex gap-2">
                   <button onClick={() => { setSelectedUser(user); UpdateModalRef.current.showModal(); }} className="btn btn-sm btn-warning flex items-center gap-1"><FaEdit /> Update</button>

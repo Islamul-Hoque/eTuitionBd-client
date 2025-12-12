@@ -7,8 +7,10 @@ import { FaBookOpen, FaGraduationCap, FaSchool, FaMapMarkerAlt, FaClock, FaMoney
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../Components/Loading/Loading";
 import toast from "react-hot-toast";
+import useRole from "../../hooks/useRole";
 
 const TuitionDetails = () => {
+  const { role } = useRole()
   const { user } = useAuth();
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
@@ -73,12 +75,11 @@ try {
       <p className="text-gray-700 flex items-center gap-2"> <FaClipboardList className="text-indigo-500" />Additional Requirements: {tuition.additionalRequirements}</p>
       <p className="text-gray-700 flex items-center gap-2"><FaEye className="text-indigo-500" />  Status: {tuition.status}</p>
 
-    {/* {user?.role === "Tutor" && ( */}
+    {user?.role === "Tutor" && (
           <button className="mt-6 w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md"
             onClick={handleApplyModalOpen} 
-            // to='/apply-tuition'
             > Apply Now </button>
-        {/* )} */}
+        )}
     </motion.div>
 
 <dialog ref={ApplyModalRef} className="modal modal-bottom sm:modal-middle">

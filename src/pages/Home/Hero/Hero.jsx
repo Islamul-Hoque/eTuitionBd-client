@@ -53,20 +53,10 @@ const Hero = () => {
             className="flex flex-col md:flex-row gap-4 justify-center md:justify-start"
           >
             <motion.div whileHover={{ scale: 1.05 }}>
-              <Link
-                to="/tuitions"
-                className="bg-indigo-500 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-600 transition"
-              >
-                Browse Tuitions
-              </Link>
+              <Link to="/all-tuitions" className="bg-indigo-500 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-600 transition" > Browse Tuitions </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }}>
-              <Link
-                to="/tutors"
-                className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition"
-              >
-                Explore Tutors
-              </Link>
+              <Link to="/all-tutors" className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition" >  Explore Tutors  </Link>
             </motion.div>
           </motion.div>
         </motion.div>
