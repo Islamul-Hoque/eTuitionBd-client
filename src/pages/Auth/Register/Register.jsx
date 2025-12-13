@@ -73,7 +73,7 @@ const Register = () => {
 
 return (
   <div className="py-16 bg-gray-100">
-  <div className="card bg-base-100 w-[45%] mx-auto shadow-2x">
+  <div className="card bg-base-100 w-[85%] md:w-[45%] mx-auto shadow-2x">
     <h3 className="text-3xl pt-3 text-center">Welcome to eTuitionBd</h3>
     <p className="text-center">Please Register to Continue</p>
     <form className="card-body" onSubmit={handleSubmit(handleRegistration)}>

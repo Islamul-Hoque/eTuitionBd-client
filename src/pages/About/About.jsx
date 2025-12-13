@@ -2,27 +2,46 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaBullseye, FaLightbulb, FaHeadset, FaUserCheck, FaHandsHelping } from 'react-icons/fa';
 
-// Animation Variants
-const fadeInUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
-const staggerContainer = { hidden: { opacity: 1 }, visible: { opacity: 1, transition: { staggerChildren: 0.2 } } };
+const fadeInUp = { 
+  hidden: { opacity: 0, y: 40 }, 
+  visible: { opacity: 1, y: 0, 
+    transition: { 
+      duration: 0.6, 
+      ease: "easeOut" 
+    } 
+  } 
+};
+const staggerContainer = { 
+  hidden: { opacity: 1 }, 
+  visible: { opacity: 1, 
+    transition: { staggerChildren: 0.2 } 
+  } 
+};
 
 const About = () => {
   const coreValues = [
-    { icon: <FaLightbulb className="text-3xl text-indigo-500" />, title: "Transparency", desc: "Ensuring complete transparency in every transaction and workflow." },
-    { icon: <FaUserCheck className="text-3xl text-indigo-500" />, title: "Trust & Verification", desc: "Building trust through verified tutors and a secure platform." },
-    { icon: <FaBullseye className="text-3xl text-indigo-500" />, title: "Quality Education", desc: "Connecting students only with highly qualified and reviewed educators." },
+    { icon: <FaLightbulb className="text-3xl text-indigo-500" />, 
+      title: "Transparency", 
+      desc: "Ensuring complete transparency in every transaction and workflow." 
+    },
+    { icon: <FaUserCheck className="text-3xl text-indigo-500" />, 
+      title: "Trust & Verification", 
+      desc: "Building trust through verified tutors and a secure platform." 
+    },
+    { icon: <FaBullseye className="text-3xl text-indigo-500" />, 
+      title: "Quality Education", 
+      desc: "Connecting students only with highly qualified and reviewed educators." 
+    },
   ];
 
   return (
-    <div className="bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Hero Section */}
+    <div className="bg-gray-50 px-6 md:px-16">
+      <div className="max-w-7xl mx-auto py-16">
         <motion.header className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
           <h1 className="text-5xl font-extrabold text-indigo-600 mb-4">About eTuitionBD</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">We are more than just a platform—we are the trusted connector for education in Bangladesh.</p>
         </motion.header>
 
-        {/* Mission & Vision */}
         <div className="grid md:grid-cols-2 gap-8 pb-14">
           <motion.div className="p-6 bg-white rounded-xl shadow-lg" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h3 className="text-2xl font-semibold mb-3 text-center">Our Mission</h3>
@@ -34,7 +53,6 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Core Values */}
         <div className="mb-20">
           <motion.h2 className="text-4xl font-bold text-center text-indigo-600 mb-10" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.3 }}>Our Core Values</motion.h2>
           <motion.div className="grid md:grid-cols-3 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={staggerContainer}>
@@ -48,7 +66,6 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* CTA */}
         <motion.div className="text-center p-12 bg-white rounded-xl shadow-xl" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ once: true, amount: 0.3 }}>
           <motion.h3 className="text-3xl font-bold text-indigo-600 mb-4" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>Join Our Community Today!</motion.h3>
           <motion.p className="text-gray-700 mb-6" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}>Discover the perfect tutor or find your next great tuition job with ease.</motion.p>

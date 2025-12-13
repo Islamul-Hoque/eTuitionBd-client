@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import Logo from "../../../components/Logo/Logo";
 
 const Footer = () => {
   return (
@@ -9,7 +10,8 @@ const Footer = () => {
         
         {/* About Section */}
         <div>
-          <h3 className="text-xl font-bold text-indigo-600 mb-4">eTuitionBd</h3>
+          {/* <h3 className="text-xl font-bold text-indigo-600 mb-4">eTuitionBd</h3> */}
+          <Logo/>
           <p className="text-sm leading-relaxed text-gray-700">
             eTuitionBd connects students with verified tutors and trusted tuition posts. 
             We ensure quality, transparency, and smooth communication for every learning journey.

@@ -6,6 +6,7 @@ import Loading from '../../../Components/Loading/Loading';
 
 const NavBar = () => {
     const { user, loading, logOut } = useAuth();
+    console.log(user);
     
     const handleLogOut = () => {
         logOut()
@@ -50,9 +51,7 @@ const activeClass = ({ isActive }) => isActive
                 <span ><Logo/> </span>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    {links}
-                </ul>
+                <ul className="menu menu-horizontal px-1"> {links} </ul>
             </div>
             <div className="navbar-end">
 
@@ -63,7 +62,7 @@ const activeClass = ({ isActive }) => isActive
                                 <img 
                                 src=
                                 // {user?.photoURL ||  user?.providerData?.[0]?.photoURL || "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"} 
-                                {user && user.photoURL ? user.photoURL : "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"}
+                                {user && user.photoURL ||  user.providerData?.[0]?.photoURL ? user.photoURL ||  user.providerData?.[0]?.photoURL : "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"}
                                 alt="" /> </div>
                         </div>
 

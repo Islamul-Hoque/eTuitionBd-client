@@ -93,7 +93,7 @@ const handleDelete = async (appId) => {
                       <button onClick={() => handleDelete(app._id)} className="btn btn-sm btn-error"><FaTrash />Delete</button>
                     </>
                   ) : (
-                    <span className="text-green-600 font-semibold">Locked</span>
+                    <button className="text-green-600 font-semibold"> <br /> Locked </button>
                   )}
                 </td>
               </tr>
