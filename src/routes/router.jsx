@@ -27,6 +27,7 @@ import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
+import OngoingTuitions from "../pages/Dashboard/OngoingTuitions/OngoingTuitions";
 
 
 export const router = createBrowserRouter([
@@ -81,10 +82,10 @@ export const router = createBrowserRouter([
         index: true,
         Component: DashboardHome
       },
-      {
-        path: 'payment/:parcelId',
-        Component: Payment
-      },
+      // {
+      //   path: 'payment/:parcelId',
+      //   Component: Payment
+      // },
       {path: 'payment-history',
         Component: PaymentHistory
       },
@@ -116,6 +117,10 @@ export const router = createBrowserRouter([
       {
         path: 'my-applications', 
         element: <TutorRoute> <MyApplications/> </TutorRoute>
+      },
+      {
+        path: 'ongoing-tuitions', 
+        element: <TutorRoute> <OngoingTuitions/> </TutorRoute>
       },
       // Admin route.......................
       {

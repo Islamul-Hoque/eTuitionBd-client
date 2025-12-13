@@ -34,6 +34,8 @@ const TuitionDetails = () => {
     tuitionId: id,
     tuitionClass: tuition.class,
     tuitionSubject: tuition.subject,
+    schedule: tuition.schedule, 
+    studentName: tuition.studentName,
     tutorPhoto: user?.photoURL ||  user?.providerData?.[0]?.photoURL,
     tutorName: form.name.value,
     tutorEmail: form.email.value,
