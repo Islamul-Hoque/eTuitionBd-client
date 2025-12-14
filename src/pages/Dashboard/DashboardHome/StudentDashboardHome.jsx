@@ -12,7 +12,7 @@ const StudentDashboardHome = () => {
       const res = await axiosSecure.get(`/student/stats/${user?.email}`);
       return res.data;
     },
-    enabled: !!user?.email,
+    enabled: !!user?.email ,
   });
 
   return (
