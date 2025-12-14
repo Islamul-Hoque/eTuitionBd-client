@@ -1,13 +1,13 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 
 const AppliedTutors = () => {
-  const { id: tuitionId } = useParams();
+  // const { id: tuitionId } = useParams();
   const { user } = useAuth();  
   const axiosSecure = useAxiosSecure();
 
@@ -41,13 +41,35 @@ const AppliedTutors = () => {
     }
   };
 
+  // const handleReject = async (applicationId) => {
+  //   const res = await axiosSecure.patch(`/applications/${applicationId}`, { status: "Rejected" });
+  //   if (res.data.modifiedCount > 0) {
+  //     Swal.fire("Rejected!", "Tutor application has been rejected.", "success");
+  //     refetch();
+  //   }
+  // };
+
   const handleReject = async (applicationId) => {
+  const result = await Swal.fire({
+    title: "Are you sure?",
+    text: "Do you really want to reject this tutor application?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, Reject",
+    cancelButtonText: "Cancel"
+  });
+
+  if (result.isConfirmed) {
     const res = await axiosSecure.patch(`/applications/${applicationId}`, { status: "Rejected" });
     if (res.data.modifiedCount > 0) {
       Swal.fire("Rejected!", "Tutor application has been rejected.", "success");
       refetch();
     }
-  };
+  }
+};
+
 
   if (isLoading) return <Loading />;
 
