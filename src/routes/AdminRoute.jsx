@@ -1,7 +1,4 @@
 import React from 'react';
-
-
-
 import Forbidden from '../components/Forbidden/Forbidden';
 import useAuth from '../hooks/useAuth';
 import useRole from '../hooks/useRole';
