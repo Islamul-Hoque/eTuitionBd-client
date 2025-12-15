@@ -5,7 +5,7 @@ import Logo from "../../../components/Logo/Logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-indigo-50 text-gray-800 py-12 px-6 md:px-16 border-t border-gray-200">
+    <footer className="bg-indigo-50 text-gray-800 px-6 md:px-10 py-6 md:py-10  border-t border-gray-200">
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
         
         {/* About Section */}

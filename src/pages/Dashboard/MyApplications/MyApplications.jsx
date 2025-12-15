@@ -62,7 +62,7 @@ const handleDelete = async (appId) => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="p-6">
+    <div className="px-6 md:px-10 py-6 md:py-10">
       <h2 className="text-2xl font-bold text-indigo-600 mb-4">My Applications ({myApplications.length})</h2>
       <div className="overflow-x-auto">
         <table className="table">
@@ -89,8 +89,10 @@ const handleDelete = async (appId) => {
                 <td className="flex gap-2">
                   {app.status !== "Approved" ? (
                     <>
-                      <button onClick={() => { setSelectedApp(app); UpdateModalRef.current.showModal(); }} className="btn btn-sm btn-warning"><FaEdit />Update</button>
-                      <button onClick={() => handleDelete(app._id)} className="btn btn-sm btn-error"><FaTrash />Delete</button>
+                      {/* <button onClick={() => { setSelectedApp(app); UpdateModalRef.current.showModal(); }} className="btn btn-sm btn-warning"><FaEdit />Update</button>
+                      <button onClick={() => handleDelete(app._id)} className="btn btn-sm btn-error"><FaTrash />Delete</button> */}
+                      <button onClick={() => { setSelectedApp(app); UpdateModalRef.current.showModal(); }} className="btn btn-sm bg-indigo-600 text-white hover:bg-indigo-700 flex items-center gap-2 shadow-md"><FaEdit />Update</button>
+                      <button onClick={() => handleDelete(app._id)} className="btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-2 shadow-md"><FaTrash />Delete</button>
                     </>
                   ) : (
                     <button className="text-green-600 font-semibold"> <br /> Locked </button>

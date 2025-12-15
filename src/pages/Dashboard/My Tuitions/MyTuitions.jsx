@@ -99,9 +99,9 @@ const MyTuitions = () => {
                             {/* <td>{tuition.studentEmail}</td> */}
                             <td>{tuition.status}</td>
                             <td className="flex gap-2">
-                                <Link to={`/tuition-details/${tuition._id}`} className="btn btn-sm btn-info flex items-center gap-1"> <FaEye /> <span>View</span></Link>
-                                <Link to={`/dashboard/update-tuition/${tuition._id}`} className="btn btn-sm btn-warning flex items-center gap-1"> <FiEdit /> <span>Edit</span> </Link>
-                                <button onClick={() => handleTuitionsDelete(tuition._id)}  className="btn btn-sm btn-error flex items-center gap-1" > <FaTrashCan /> <span>Delete</span> </button>
+                                <Link to={`/tuition-details/${tuition._id}`} className="btn btn-sm bg-indigo-600 text-white hover:bg-indigo-700 flex items-center gap-2 shadow-md"> <FaEye /> <span>View</span></Link>
+                                <Link to={`/dashboard/update-tuition/${tuition._id}`} className="btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-2 shadow-md"> <FiEdit /> <span>Edit</span> </Link>
+                                <button onClick={() => handleTuitionsDelete(tuition._id)}  className="btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-2 shadow-md" > <FaTrashCan /> <span>Delete</span> </button>
                             </td>
                         </tr>
                         ))}

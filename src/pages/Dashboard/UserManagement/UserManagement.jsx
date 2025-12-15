@@ -73,7 +73,7 @@ const UserManagement = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="p-6">
+    <div className="px-6 md:px-10 py-6 md:py-10">
       <h2 className="text-2xl font-bold text-indigo-600 mb-4">User Management ({users.length})</h2>
       <div className="overflow-x-auto">
         <table className="table">

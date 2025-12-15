@@ -16,40 +16,23 @@ const PaymentHistory = () => {
   });
 
   return (
-    <div className="px-6 md:px-14 py-10">
-      <h2 className="text-3xl font-bold text-indigo-600 mb-8 text-center">
-        My Payment History
-      </h2>
+    <div className="px-6 md:px-10 py-6 md:py-10">
+      <h2 className="text-3xl font-bold text-indigo-600 mb-8 text-center"> My Payment History </h2>
 
-      {/* Summary */}
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-  {/* Total Payments Count */}
-  <div className="bg-indigo-50 shadow rounded-xl p-6 text-center">
-    <h3 className="text-lg font-semibold text-indigo-600 mb-2">
-      Total Payments
-    </h3>
-    <p className="text-3xl font-bold text-indigo-700">
-      {payments.length}
-    </p>
-  </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="bg-indigo-50 shadow rounded-xl p-6 text-center">
+          <h3 className="text-lg font-semibold text-indigo-600 mb-2"> Total Payments </h3>
+          <p className="text-3xl font-bold text-indigo-700"> {payments.length} </p>
+        </div>
 
-  {/* Total Payments Amount */}
-  <div className="bg-green-50 shadow rounded-xl p-6 text-center">
-    <h3 className="text-lg font-semibold text-green-600 mb-2">
-      Total Payments Amount
-    </h3>
-    <p className="text-3xl font-bold text-green-700">
-      {payments.reduce((sum, pay) => sum + pay.amount, 0)} USD
-    </p>
-  </div>
-</div>
+        <div className="bg-green-50 shadow rounded-xl p-6 text-center">
+          <h3 className="text-lg font-semibold text-green-600 mb-2"> Total Payments Amount </h3>
+          <p className="text-3xl font-bold text-green-700"> {payments.reduce((sum, pay) => sum + pay.amount, 0)} USD</p>
+        </div>
+      </div>
 
-
-      {/* Payment History Table */}
       <div className="bg-white shadow-lg rounded-xl p-6">
-        <h3 className="text-2xl font-semibold text-indigo-500 mb-4">
-          Successful Transactions
-        </h3>
+        <h3 className="text-2xl font-semibold text-indigo-500 mb-4"> Successful Transactions </h3>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>

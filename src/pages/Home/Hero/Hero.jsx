@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 const Hero = () => {
   return (
-    <section className="bg-indigo-50 text-gray-800 min-h-[80vh] flex items-center px-6 md:px-16">
+    <section className="bg-indigo-50 text-gray-800 min-h-[80vh] flex items-center px-6 md:px-10 py-6 md:py-10">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
         <motion.div initial={{ opacity: 0, scale: 0.8, rotate: -5 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ delay: 0.3, type: "spring", stiffness: 70 }} className="flex justify-center md:justify-end order-1 md:order-2" >

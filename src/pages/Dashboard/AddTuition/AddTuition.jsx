@@ -40,7 +40,7 @@ const AddTuition = () => {
 }
 
   return (
-    <div className="p-10 md:p-20 bg-gray-50">
+    <div className="px-6 md:px-10 py-6 md:py-10 bg-gray-50">
         <div className=" mx-auto bg-white shadow-lg rounded-lg p-8">
       <h3 className="text-2xl font-bold text-indigo-600 mb-6 text-center">Add Tuition Post</h3>
 

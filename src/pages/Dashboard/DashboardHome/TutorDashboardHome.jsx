@@ -17,7 +17,7 @@ const TutorDashboardHome = () => {
     });
 
     return (
-        <div className="px-6 md:px-14 py-10">
+        <div className="px-6 md:px-10 py-6 md:py-10">
             <h2 className="text-3xl font-bold text-indigo-600 mb-8 text-center"> Tutor Dashboard </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">

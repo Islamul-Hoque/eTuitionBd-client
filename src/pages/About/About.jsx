@@ -35,10 +35,10 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-gray-50 px-6 md:px-16">
-      <div className="max-w-7xl mx-auto py-16">
+    <div className="bg-gray-50 px-6 md:px-10 py-6 md:py-10">
+      <div className="max-w-7xl mx-auto ">
         <motion.header className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
-          <h1 className="text-5xl font-extrabold text-indigo-600 mb-4">About eTuitionBD</h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-indigo-600 mb-4">About eTuitionBD</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">We are more than just a platform—we are the trusted connector for education in Bangladesh.</p>
         </motion.header>
 

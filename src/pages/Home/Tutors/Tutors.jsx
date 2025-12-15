@@ -18,19 +18,14 @@ const LatestTutors = () => {
   }, [axiosSecure]);
 
   return (
-    <section className="py-12 px-6 md:px-16 bg-white">
+    <section className="px-6 md:px-10 py-6 md:py-10 bg-white">
       <div className="max-w-7xl mx-auto">
         <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="text-3xl md:text-4xl font-bold text-indigo-600 mb-8 text-center">Latest Tutors</motion.h2>
 
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} transition={{ staggerChildren: 0.15 }} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {tutors.map(tutor => (
-            // <motion.div key={tutor._id} variants={cardVariants} className="group block p-6 rounded-xl border border-gray-200 bg-white shadow-lg transform transition-all duration-300 ease-out hover:scale-[1.05] cursor-pointer">
-            //     <img src={tutor.photoURL} alt={tutor.displayName} className="w-20 h-20 rounded-full mx-auto mb-4" />
-            //     <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-2 justify-center">{tutor.displayName}</h3>
-            //     <p className="text-gray-600 text-sm text-center">{tutor.email}</p>
-            //     <p className="text-gray-600 text-sm text-center">{tutor.phone}</p>
-            // </motion.div>
-            <TutorsCard key={tutor._id} tutor={tutor} />
+          { 
+            tutors.map(tutor => ( <TutorsCard key={tutor._id} tutor={tutor} />
+
           ))}
         </motion.div>
       </div>

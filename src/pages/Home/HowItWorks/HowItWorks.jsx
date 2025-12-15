@@ -32,33 +32,13 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-16 px-6 md:px-16 bg-gray-50">
+    <section className="px-6 md:px-10 py-6 md:py-10 bg-gray-50">
       <div className="max-w-7xl mx-auto">
-        {/* Section Heading */}
-        <motion.h2
-          variants={headingVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
-          className="text-3xl md:text-4xl font-bold text-indigo-600 mb-12 text-center"
-        >
-          How the Platform Works
-        </motion.h2>
+        <motion.h2  variants={headingVariants} initial="hidden"  whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="text-3xl md:text-4xl font-bold text-indigo-600 mb-12 text-center" > How the Platform Works </motion.h2>
 
-        {/* Steps Grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ staggerChildren: 0.15 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} transition={{ staggerChildren: 0.15 }} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" >
           {steps.map((step, idx) => (
-            <motion.div
-              key={idx}
-              variants={cardVariants}
-              className="p-6 rounded-xl border border-gray-200 bg-white shadow-lg hover:shadow-xl transform transition duration-300 hover:scale-[1.05]"
-            >
+            <motion.div key={idx} variants={cardVariants} className="p-6 rounded-xl border border-gray-200 bg-white shadow-lg hover:shadow-xl transform transition duration-300 hover:scale-[1.05]" >
               <div className="flex flex-col items-center text-center space-y-4">
                 {step.icon}
                 <h3 className="text-lg font-semibold text-gray-800">{step.title}</h3>
