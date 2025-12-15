@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaUserGraduate, FaEnvelope, FaPhone } from "react-icons/fa"; // 👈 missing imports fixed
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import TutorsCard from "./TutorsCard";
 
-const cardVariants = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
+// const cardVariants = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
 const headingVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
 
 const LatestTutors = () => {
