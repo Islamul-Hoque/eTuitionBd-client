@@ -94,8 +94,8 @@ const Register = () => {
 
 return (
     <div className="flex justify-center items-center min-h-screen pt-12 pb-16 ">
-        <div className="w-[88%] md:w-[40%] pb-3 rounded-[0.7rem]  overflow-hidden shadow bg-white  border border-gray-200 ">
-            <h2 className="text-3xl font-bold text-center pt-6"> Sign Up for <span className="text-gradient">eTuitionBd</span></h2>   
+        <div className="w-[88%] md:w-[50%] pb-3 rounded-[0.7rem]  overflow-hidden shadow bg-white  border border-gray-200 ">
+            <h2 className="text-2xl md:text-4xl font-bold text-center text-indigo-500 pt-10"> Sign Up for <span className="text-gradient">eTuitionBd</span></h2>   
             <div className="card-body text-gray-800 ">
                 <form onSubmit={handleSubmit(handleRegistration)}>
                     <fieldset className="fieldset">
