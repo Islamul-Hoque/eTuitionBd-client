@@ -45,6 +45,7 @@ const { data: role = null, isLoading: roleLoading,  } = useQuery({
     tuitionSubject: tuition.subject,
     schedule: tuition.schedule, 
     studentName: tuition.studentName,
+    studentEmail: tuition.studentEmail,
     tutorPhoto: user?.photoURL ||  user?.providerData?.[0]?.photoURL,
     tutorName: form.name.value,
     tutorEmail: form.email.value,

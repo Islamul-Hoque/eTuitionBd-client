@@ -51,7 +51,16 @@ const PaymentHistory = () => {
               {payments.map((pay, index) => (
                 <tr key={pay._id}>
                     <td>{index + 1}</td>
-                    <td>{pay.tutorName} ({pay.tutorEmail})</td>
+                    <td>
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-gray-800">
+                      {pay.tutorName}
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      {pay.tutorEmail}
+                    </span>
+                  </div>
+                </td>
                     <td>{pay.subject}</td>
                     <td>{pay.class}</td>
                     <td className="text-indigo-600 font-semibold">{pay.amount}</td>

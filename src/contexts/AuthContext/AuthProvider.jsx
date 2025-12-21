@@ -45,8 +45,8 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             if (currentUser) {
                 const loggedUser = { email: currentUser?.email || currentUser?.providerData?.[0]?.email }
-                    // axios.post('http://localhost:3000/getToken', loggedUser)
-                    axios.post('https://etuitionbd-api.vercel.app/getToken', loggedUser)
+                    axios.post('http://localhost:3000/getToken', loggedUser)
+                    // axios.post('https://etuitionbd-api.vercel.app/getToken', loggedUser)
                         .then(res => {
                             const receivedToken = res.data.token; 
                             localStorage.setItem('jwt-token', receivedToken)

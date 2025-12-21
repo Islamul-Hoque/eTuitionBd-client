@@ -5,18 +5,19 @@ import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaBan, FaCheckCircle, FaEdit, FaHourglassHalf, FaLock, FaTimesCircle, FaTrash } from "react-icons/fa";
 
 const MyApplications = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [selectedApp, setSelectedApp] = useState(null);
   const UpdateModalRef = useRef(null);
+  const email = user?.email || user?.providerData?.[0]?.email
 
   const { data: myApplications = [], isLoading, refetch } = useQuery({
-    queryKey: ["my-applications", user?.email],
+    queryKey: ["my-applications", email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/my-applications/tutor/${user?.email || user?.providerData?.[0]?.email}`);
+      const res = await axiosSecure.get(`/my-applications/tutor/${email}`);
       return res.data;
     },
   });
@@ -70,6 +71,7 @@ const handleDelete = async (appId) => {
             <tr>
               <th>#</th>
               <th>Tuition Info</th>
+              <th>Student Info</th>
               <th>Qualifications</th>
               <th>Experience</th>
               <th>Expected Salary</th>
@@ -81,22 +83,33 @@ const handleDelete = async (appId) => {
             {myApplications.map((app, index) => (
               <tr key={app._id}>
                 <td>{index + 1}</td>
-                <td><span className="font-semibold">Subject: {app.tuitionSubject}</span><br /><span>Class: {app.tuitionClass}</span></td>
+                <td><span className="font-semibold"> {app.tuitionSubject}</span><br /><span> {app.tuitionClass}</span></td>
+                <td><span className="font-semibold">{app.studentName}</span><br /> <span> {app.studentEmail}</span></td>
                 <td>{app.qualifications}</td>
                 <td>{app.experience}</td>
                 <td>{app.expectedSalary} Tk/Month</td>
-                <td>{app.status}</td>
-                <td className="flex gap-2">
-                  {app.status !== "Approved" ? (
-                    <>
-                      {/* <button onClick={() => { setSelectedApp(app); UpdateModalRef.current.showModal(); }} className="btn btn-sm btn-warning"><FaEdit />Update</button>
-                      <button onClick={() => handleDelete(app._id)} className="btn btn-sm btn-error"><FaTrash />Delete</button> */}
-                      <button onClick={() => { setSelectedApp(app); UpdateModalRef.current.showModal(); }} className="btn btn-sm bg-indigo-600 text-white hover:bg-indigo-700 flex items-center gap-2 shadow-md"><FaEdit />Update</button>
-                      <button onClick={() => handleDelete(app._id)} className="btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-2 shadow-md"><FaTrash />Delete</button>
-                    </>
-                  ) : (
-                    <button className="text-green-600 font-semibold"> <br /> Locked </button>
-                  )}
+                <td> {app.status === "Approved" ? (
+                    <span className="inline-flex items-center gap-1 bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium">
+                    <FaCheckCircle className="text-green-500" />  Approved </span>
+                    ) : app.status === "Rejected" ? ( <span className="inline-flex items-center gap-1 bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium">
+                        <FaTimesCircle className="text-red-500" />  Rejected</span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-medium">
+                        <FaHourglassHalf className="text-yellow-500" />  Pending </span>
+                    )}
+                </td>
+
+                <td className="align-middle">
+                  <div className="flex gap-2 ">
+                    {app.status === "Approved" ? (<span className="bg-green-100 text-green-600 px-4 py-1 rounded-full text-sm font-medium flex items-center gap-1">  <FaLock /> Locked </span>
+                    ) : app.status === "Rejected" ? ( <span className="bg-red-100 text-red-600 px-4 py-1 rounded-full text-sm font-medium flex items-center gap-1"> <FaBan className="text-red-500" />  Declined</span>
+                    ) : (
+                      <>
+                        <button onClick={() => { setSelectedApp(app);  UpdateModalRef.current.showModal(); }}  className="btn btn-sm bg-indigo-600 text-white hover:bg-indigo-700 flex items-center gap-2 shadow-md"  > <FaEdit /> Update </button>
+                        <button  onClick={() => handleDelete(app._id)} className="btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-2 shadow-md" > <FaTrash /> Delete </button>
+                      </>
+                    )}
+                  </div>
                 </td>
               </tr>
             ))}
