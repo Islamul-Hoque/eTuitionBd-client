@@ -7,7 +7,6 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
-// import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm();
@@ -60,7 +59,6 @@ const Register = () => {
                 navigate( "/");
             })
             .catch((error) => {
-                // toast.error("Profile update failed!");
                 console.log(error)
             });
         });
@@ -72,9 +70,6 @@ const Register = () => {
 });
 
 };
-
-
-
 
 return (
     <div className="flex justify-center items-center min-h-screen pt-12 pb-16 bg-linear-to-br from-indigo-50 via-purple-50/0.1 to-white ">
@@ -95,15 +90,15 @@ return (
                         <input type="email" {...register("email", { required: true })} className="inputField" placeholder="Email" />
                         {errors.email?.type === "required" && <p className="text-red-500">Email is required.</p>}
 
-                    <div className="relative">
-                        <label className="label">Password</label>
-                        <input type={ show ? "text" : "password" }  {...register("password", { required: true, minLength: 6, pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/, })}  className="inputField" placeholder="Password" />
-                        <span onClick={()=> setShow(!show) } className="absolute text-[1rem] right-4 top-[1.9rem] cursor-pointer z-50 " > { show ? <FaEye/> : <IoEyeOff/> }  </span>
+                        <div className="relative">
+                            <label className="label">Password</label>
+                            <input type={ show ? "text" : "password" }  {...register("password", { required: true, minLength: 6, pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/, })}  className="inputField" placeholder="Password" />
+                            <span onClick={()=> setShow(!show) } className="absolute text-[1rem] right-4 top-[1.9rem] cursor-pointer z-50 " > { show ? <FaEye/> : <IoEyeOff/> }  </span>
 
-                            {errors.password?.type === "required" && <p className="text-red-500">Password is required.</p>}
-                            {errors.password?.type === "minLength" && <p className="text-red-500">Password must be 6 characters or longer</p>}
-                            {errors.password?.type === "pattern" && <p className="text-red-500">Password must contain an uppercase letter, a lowercase letter, a number, and a special character.</p>}
-                    </div>
+                                {errors.password?.type === "required" && <p className="text-red-500">Password is required.</p>}
+                                {errors.password?.type === "minLength" && <p className="text-red-500">Password must be 6 characters or longer</p>}
+                                {errors.password?.type === "pattern" && <p className="text-red-500">Password must contain an uppercase letter, a lowercase letter, a number, and a special character.</p>}
+                        </div>
 
                         <label className="label">Register As</label>
                         <select {...register("role", { required: true })} className=" select inputField" >

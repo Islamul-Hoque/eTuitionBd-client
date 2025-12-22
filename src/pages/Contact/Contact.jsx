@@ -12,7 +12,7 @@ const handleSubmit = (e) => { e.preventDefault(); toast.success("Your message ha
 const Contact = () => {
     const { user } = useAuth();
     return (
-        <div className=" px-6 md:px-10 py-6 md:py-10 bg-gradient-to-br from-indigo-50 via-purple-50/0.1 to-white">
+        <div className=" px-6 md:px-10 py-6 md:py-10 bg-linear-to-br from-indigo-50 via-purple-50/0.1 to-white">
             <div className="max-w-7xl mx-auto">
                 <motion.h2 className="text-4xl font-bold text-indigo-600 text-center mb-4" 
                     initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>

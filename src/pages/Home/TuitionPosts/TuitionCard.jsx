@@ -11,7 +11,6 @@ const TuitionCard = ({ tuition }) => {
 };
     return (
         <motion.div key={tuition._id} variants={cardVariants} className="flex flex-col justify-between group p-6 rounded-xl border border-gray-200 bg-white shadow-lg transform transition-all duration-300 ease-out hover:scale-[1.05] ">
-        {/* <div key={tuition._id} variants={cardVariants} className="flex flex-col justify-between group p-6 rounded-xl border border-gray-200 bg-white shadow-lg transform transition-all duration-300 ease-out hover:scale-[1.05] "> */}
             <div className="space-y-3 flex-1 ">
                 <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-2"><FaBookOpen className="text-indigo-500" /> {tuition.subject}</h3>
                 <p className="text-gray-600 text-sm flex items-center gap-2"><FaGraduationCap className="text-indigo-500" /> {tuition.class}</p>
@@ -21,7 +20,6 @@ const TuitionCard = ({ tuition }) => {
                 <div className="text-gray-600 text-sm flex items-center gap-2"> <FaRegCalendarAlt className='text-indigo-500'/> {format(new Date(tuition.createdAt), "dd/MM/yyyy")}</div>
             </div>
             <Link to={`/tuition-details/${tuition._id}`} className="mt-4 bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition flex items-center justify-center gap-2"><FaEye /> View Details</Link>
-        {/* </div> */}
         </motion.div>
     );
 };

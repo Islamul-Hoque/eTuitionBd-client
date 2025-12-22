@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import TutorsCard from "./TutorsCard";
 
-// const cardVariants = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
 const headingVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
 
 const LatestTutors = () => {
@@ -33,8 +32,3 @@ const LatestTutors = () => {
 };
 
 export default LatestTutors;
-
-
-// bg-gradient-to-bl from-white via-purple-50 to-indigo-50
-
-// bg-gradient-to-br from-indigo-50 via-purple-50 to-white

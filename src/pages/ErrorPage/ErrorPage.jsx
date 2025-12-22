@@ -9,7 +9,7 @@ const buttonVariants = { hover: { scale: 1.05, transition: { duration: 0.3 } }, 
 const ErrorPage = () => {
     return (
         <motion.div className="flex flex-col items-center justify-center min-h-screen text-center p-6 bg-gradient-to-br from-indigo-50 via-purple-50/0.1 to-white "
-           initial="hidden" animate="visible" variants={containerVariants}>
+            initial="hidden" animate="visible" variants={containerVariants}>
             <motion.h1 className="text-8xl md:text-9xl font-extrabold text-indigo-600 mb-4" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 100, delay: 0.2 }}>404</motion.h1>
             <motion.h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4" variants={textVariants}>Page Not Found!</motion.h2>
             <motion.p className="text-lg text-gray-600 w-[90%] mb-8" variants={textVariants} transition={{ delay: 0.5 }}> Sorry, we couldn’t find that page. It may have been moved or no longer exists. </motion.p>

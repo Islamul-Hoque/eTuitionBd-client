@@ -37,7 +37,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="px-6 md:px-10 py-6 md:py-10 bg-gradient-to-br from-gray-50 via-purple-50/0.4 to-indigo-50">
+    <section className="px-6 md:px-10 py-6 md:py-10 bg-linear-to-br from-gray-50 via-purple-50/0.4 to-indigo-50">
       <div className="max-w-7xl mx-auto">
         <motion.h2  variants={headingVariants}  initial="hidden"  whileInView="visible"  viewport={{ once: false, amount: 0.2 }}  className="text-3xl md:text-4xl font-bold text-indigo-600 mb-12 text-center"  > Why Choose Us </motion.h2>
 

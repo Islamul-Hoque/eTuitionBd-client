@@ -27,10 +27,6 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider);
     }
 
-    // const logOut = () => {
-    //     setLoading(true);
-    //     return signOut(auth);
-    // }
     const logOut = () => {
         setLoading(true);
         localStorage.removeItem("jwt-token"); 
@@ -43,60 +39,20 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, profile)
     }
 
-    // const getJwtToken = async (email) => {
-    //     try {
-    //         const res = await axios.post("http://localhost:3000/getToken", { email });
-    //         localStorage.setItem("jwt-token", res.data.token);
-    //         console.log("Token received:", res.data.token);
-    //     } catch (err) {
-    //         console.error("Failed to fetch token:", err);
-    //     }
-    // };
-    
-const getJwtToken = async (email) => {
-  try {
-    const res = await axios.post("http://localhost:3000/getToken", { email });
-    const token = res.data.token;
-    localStorage.setItem("jwt-token", token);
-    console.log("Token received:", token);
-    return token; // ✅ return token for confirmation
-  } catch (err) {
-    console.error("Failed to fetch token:", err);
-    return null;
-  }
-};
+    const getJwtToken = async (email) => {
+    try {
+        const res = await axios.post("https://etuitionbd-api.vercel.app/getToken", { email });
+        // const res = await axios.post("http://localhost:3000/getToken", { email });
+        const token = res.data.token;
+        localStorage.setItem("jwt-token", token);
+        console.log("Token received:", token);
+        return token;
+    } catch (err) {
+        console.error("Failed to fetch token:", err);
+        return null;
+    }
+    };
 
-
-
-    // observe user state
-    // useEffect(() => {
-    //     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-    //         setUser(currentUser);
-    //         if (currentUser) {
-    //             const loggedUser = { email: currentUser?.email || currentUser?.providerData?.[0]?.email }
-
-    //                 axios.post('http://localhost:3000/getToken', loggedUser)
-    //                 // axios.post('https://etuitionbd-api.vercel.app/getToken', loggedUser)
-    //                     .then(res => {
-    //                         const receivedToken = res.data.token; 
-    //                         localStorage.setItem('jwt-token', receivedToken)
-    //                         console.log( 'after getting token' ,res.data.token);
-    //                     })
-    //         } else { 
-    //             localStorage.removeItem('jwt-token'); 
-    //         }
-    //         setLoading(false);
-    //         })
-    //     return () =>  unSubscribe(); 
-    // }, [])
-
-//     useEffect(() => {
-//   const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-//     setUser(currentUser);
-//     setLoading(false);
-//   });
-//   return () => unSubscribe();
-// }, []);
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -108,8 +64,6 @@ const getJwtToken = async (email) => {
         });
     return () => unSubscribe();
     }, []);
-
-
 
     const authInfo = {
         user,

@@ -9,7 +9,6 @@ const TutorsCard = ({tutor}) => {
             <img src={tutor.photoURL} alt={tutor.displayName} className="w-20 h-20 rounded-full mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-2 justify-center">{tutor.displayName}</h3>
             <p className="text-gray-600 text-sm text-center">{tutor.email}</p>
-            {/* <p className="text-gray-600 text-sm text-center">{tutor.phone}</p> */}
         </motion.div>
         </div>
     );

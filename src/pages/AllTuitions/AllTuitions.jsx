@@ -34,7 +34,7 @@ const AllTuitions = () => {
     }
   });
 
-  // Tuition list 
+  // All Tuition   
   const { data: listData,  } = useQuery({
     queryKey: ['all-tuitions', searchQuery, sort, page, filterClass, filterSubject, filterLocation],
     queryFn: async () => {

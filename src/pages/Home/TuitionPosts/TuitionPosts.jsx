@@ -4,8 +4,6 @@ import { FaBookOpen, FaGraduationCap, FaSchool, FaMapMarkerAlt, FaClock, FaMoney
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import TuitionCard from "./TuitionCard";
 
-// const cardVariants = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } };
-
 const TuitionPosts = () => {
     const [tuitions, setTuitions] = useState([]);
     const axiosSecure = useAxiosSecure();
@@ -37,5 +35,3 @@ const TuitionPosts = () => {
 };
 
 export default TuitionPosts;
-
-// py-12 px-6 md:px-16

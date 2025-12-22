@@ -1,47 +1,18 @@
 import React from 'react';
 import { FaBookOpen, FaChartBar, FaClipboardList, FaGraduationCap, FaMoneyBillWave, FaPlusCircle, FaRegCreditCard, FaSignOutAlt, FaTasks, FaUserEdit, FaUsers } from 'react-icons/fa';
-import { Link, NavLink, Outlet, useNavigate } from 'react-router';
+import { Link, NavLink, Outlet } from 'react-router';
 import useRole from '../../hooks/useRole';
 import logo from '../../assets/eTuitionBD.png';
-import useAuth from '../../hooks/useAuth';
-import toast from 'react-hot-toast';
 import { FaHome, FaTachometerAlt } from "react-icons/fa";
 import { MdDashboard } from 'react-icons/md';
-import { useQueryClient } from '@tanstack/react-query';
-
 
 const DashboardLayout = () => {
   const { role } = useRole();
-  const { logOut } = useAuth();
 
-  // const navigate = useNavigate();
-
-  const queryClient = useQueryClient();
-  const handleLogout = async () => {
-  try {
-    await logOut();
-    queryClient.clear();   // ✅ clear react-query cache
-    toast.success("Logged out successfully!");
-    // navigate("/login");
-  } catch (error) {
-    toast.error("Logout failed. Please try again.");
-  }
-};
-
-  // const handleLogout = async () => {
-  //   try {
-  //     await logOut();
-  //     navigate("/login"); 
-  //     toast.success("Logged out successfully!");
-  //   } catch (error) { 
-  //     toast.error("Logout failed. Please try again.");
-  //   }
-  // };
 
   const activeClass = ({ isActive }) => isActive
     ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
     : "text-gray-700 hover:text-indigo-500 px-3 py-1 rounded-md";
-    // ? "bg-indigo-600 text-white font-semibold" : "text-gray-700 hover:bg-indigo-100"
 
   return (
     <div className="drawer lg:drawer-open max-w-7xl mx-auto">
@@ -56,13 +27,11 @@ const DashboardLayout = () => {
           </label>
 
           <Link to='/' className="font-bold md:text-2xl text-indigo-500">eTuitionBD Dashboard</Link>
-            {/* <button  onClick={handleLogout} className="btn btn-sm bg-indigo-100 text-indigo-600 hover:bg-indigo-200"> <FaSignOutAlt /> Logout</button> */}
         </nav>
 
         <div className=""> <Outlet /> </div>
       </div>
 
-      {/* Sidebar */}
       <div className="drawer-side  shadow">
         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
         <div className="flex min-h-full flex-col bg-indigo-50 text-gray-800 shadow w-52">
@@ -71,7 +40,6 @@ const DashboardLayout = () => {
 
             <li> <NavLink className={activeClass} end to="/dashboard">  <MdDashboard /> <span>Dashboard</span> </NavLink> </li>
             <div className="border-t border-gray-300 my-2"></div>
-
 
             {role === 'Student' && (
               <>

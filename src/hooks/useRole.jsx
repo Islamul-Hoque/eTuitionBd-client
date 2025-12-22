@@ -4,7 +4,6 @@ import React from 'react';
 import useAxiosSecure from './useAxiosSecure';
 import useAuth from './useAuth';
 
-
 const useRole = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();

@@ -8,29 +8,17 @@ import { useQueryClient } from '@tanstack/react-query';
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
-    console.log(user);
-
-    // const handleLogOut = async () => {
-    //     try {
-    //         await logOut();
-    //         toast.success("Logged out successfully!");
-    //     } catch (error) { 
-    //         toast.error("Logout failed. Please try again.");
-    //     }
-    // };
-
     const queryClient = useQueryClient();
 
-const handleLogOut = async () => {
-  try {
-    await logOut();
-    queryClient.clear();   // ✅ clear react-query cache
-    toast.success("Logged out successfully!");
-    // navigate("/login");
-  } catch (error) {
-    toast.error("Logout failed. Please try again.");
-  }
-};
+    const handleLogOut = async () => {
+        try {
+            await logOut();
+            queryClient.clear();
+            toast.success("Logged out successfully!");
+        } catch (error) {
+            toast.error("Logout failed. Please try again.");
+        }
+    }
 
     const activeClass = ({ isActive }) => isActive
         ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
@@ -72,7 +60,6 @@ const handleLogOut = async () => {
                             <div className="w-10 rounded-full"> 
                                 <img src=
                                 {user?.photoURL ||  user?.providerData?.[0]?.photoURL || "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"} 
-                                // {user && user.photoURL ||  user.providerData?.[0]?.photoURL ? user.photoURL ||  user.providerData?.[0]?.photoURL : "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"}
                                 alt="" /> </div>
                         </div>
 
